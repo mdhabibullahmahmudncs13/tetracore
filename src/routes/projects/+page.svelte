@@ -3,7 +3,7 @@
     import Nav from '$lib/components/Nav.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import ProjectCard from '$lib/components/ProjectCardcd.svelte';
-    import ProjectDetail from './components/ProjectDetail.svelte';
+    import ProjectDetail from '$lib/components/ProjectDetail.svelte';
 
     let activeFilter = 'all';
 
@@ -60,10 +60,16 @@
 
     const featuredProject = projects[0];
 
+    /**
+     * @param {string} category
+     */
     function filterProjects(category) {
         activeFilter = category;
     }
 
+    /**
+     * @param {string} filter
+     */
     function isActive(filter) {
         return activeFilter === filter ? 'active' : '';
     }
