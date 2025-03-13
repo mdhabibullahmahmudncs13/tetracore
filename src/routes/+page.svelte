@@ -5,6 +5,7 @@
     import ProjectCard from '$lib/components/ProjectCard.svelte';
     import AchievementItem from '$lib/components/AchievementItem.svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import Button from '$lib/components/Button.svelte';
 
     const projects = [
         {
@@ -130,11 +131,7 @@
         margin-top: 2rem;
     }
 
-    @media (max-width: 768px) {
-        .section {
-            padding: 1.5rem;
-        }
-    }
+    
 
     @media (max-width: 480px) {
         .projects-container {
