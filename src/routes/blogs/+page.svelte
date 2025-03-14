@@ -2,8 +2,49 @@
     import Header from '$lib/components/Header.svelte';
     import Nav from '$lib/components/Nav.svelte';
     import Footer from '$lib/components/Footer.svelte';
-    import BlogCard from '$lib/components/BlogCard.svelte';
-    import Sidebar from './components/Sidebar.svelte';
+    // Replace these with your actual component paths or create these components
+    // import BlogCard from '$lib/components/BlogCard.svelte';
+    // import Sidebar from '$lib/components/Sidebar.svelte';
+    
+    // Temporary replacements
+    import { onMount } from 'svelte';
+    
+    // Simple component replacements until actual components are created
+    const BlogCard = {
+        $$render: ($$result, props) => {
+            return `<div class="blog-card">
+                <img src="${props.image}" alt="${props.title}">
+                <div class="card-content">
+                    <h3>${props.title}</h3>
+                    <p class="meta">${props.date} | By ${props.author}</p>
+                    <span class="category">${props.category}</span>
+                    <p>${props.excerpt}</p>
+                    <a href="${props.link}">Read more</a>
+                </div>
+            </div>`;
+        }
+    };
+    
+    const Sidebar = {
+        $$render: () => {
+            return `<aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>About</h3>
+                    <p>Welcome to our blog where we share insights about technology and innovation.</p>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li>Technology</li>
+                        <li>Innovation</li>
+                        <li>AI & ML</li>
+                        <li>IoT</li>
+                        <li>Company News</li>
+                    </ul>
+                </div>
+            </aside>`;
+        }
+    };
 
     let activeFilter = 'all';
     let searchQuery = '';
@@ -34,13 +75,13 @@
             date: "March 2, 2025",
             author: "Jane Smith",
             category: "Innovation",
-            excerpt: "Manufacturing is undergoing a digital transformation with IoT sensors, real-time analytics, and predictive maintenance reshaping factory floors worldwide.",
-            link: "#"
-        },
-        {
-            image: "/api/placeholder/400/200",
-            title: "Ethical Considerations in AI Development",
-            date: "February 25, 2025",
+    function filterPosts(category: string) {
+        activeFilter = category;
+    }
+
+    function isActive(filter: string) {
+        return activeFilter === filter ? 'active' : '';
+    }
             author: "Alice Johnson",
             category: "AI & ML",
             excerpt: "As AI becomes more integrated into our daily lives, we must address the ethical implications and build frameworks for responsible innovation.",
@@ -83,16 +124,16 @@
         return activeFilter === filter ? 'active' : '';
     }
 
-    const filteredPosts = posts.filter(post => 
+    const filteredPosts = posts.filter(post =>  )
         (activeFilter === 'all' || post.category === activeFilter) &&
         (searchQuery === '' || post.title.toLowerCase().includes(searchQuery.toLowerCase()))
-    );
-</script>
-
-<Header />
-<Nav />
-
-<div class="container">
+                <div class="pagination">
+                    <button class="page-link active">1</button>
+                    <button class="page-link">2</button>
+                    <button class="page-link">3</button>
+                    <button class="page-link">4</button>
+                    <button class="page-link">></button>
+                </div>
     <div class="featured-blog">
         <img src={featuredPost.image} alt={featuredPost.title} />
         <div class="featured-content">
